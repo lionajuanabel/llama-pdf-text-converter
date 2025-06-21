@@ -75,10 +75,8 @@ def process_pdf(
             if not keep_images:
                 image_file.unlink()
 
-        # Merge text files if requested
-        if merge_text:
-            merged_file = merge_text_files(text_dir)
-            print(f"Merged text file created: {merged_file}")
+        # Merge text files
+        merge_text_files(text_dir)
 
         print(f"Processing complete! Output saved to: {output_base}")
 
