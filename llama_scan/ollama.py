@@ -4,6 +4,18 @@ import requests
 from .constants import OLLAMA_BASE_URL, TRANSCRIPTION_PROMPT
 
 
+def check_for_server() -> bool:
+    """
+    Check if the Ollama server is running.
+    """
+
+    try:
+        response = requests.get(f"{OLLAMA_BASE_URL}/api/tags")
+        return True
+    except requests.exceptions.RequestException:
+        return False
+
+
 def transcribe_image(image_path: str, model: str) -> str:
     """
     Transcribe an image using the specified model.

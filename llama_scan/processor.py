@@ -3,7 +3,7 @@ from pathlib import Path
 from tqdm import tqdm
 
 from .pdf import pdf_to_images
-from .transcriber import transcribe_image
+from .ollama import transcribe_image, check_for_server
 from .utils import setup_output_dirs, merge_text_files, resize_image
 
 
@@ -35,6 +35,12 @@ def process_pdf(
 
     if not pdf_path.exists():
         print(f"Error: PDF file not found: {pdf_path}")
+        sys.exit(1)
+
+    if not check_for_server():
+        print(
+            "Error: Ollama server not running. Please start the server and try again."
+        )
         sys.exit(1)
 
     # Setup output directories
