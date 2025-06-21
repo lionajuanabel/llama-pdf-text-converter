@@ -1,4 +1,5 @@
 import argparse
+from datetime import datetime
 
 from .processor import process_pdf
 
@@ -14,8 +15,8 @@ def cli():
     parser.add_argument(
         "--output",
         "-o",
-        default="output",
-        help="Output directory (default: output)",
+        default=f"output_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+        help="Output directory (default: output_YYYYMMDD_HHMMSS)",
     )
     parser.add_argument(
         "--model",
