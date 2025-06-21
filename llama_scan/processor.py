@@ -2,9 +2,9 @@ import sys
 from pathlib import Path
 from tqdm import tqdm
 
-from .pdf import pdf_to_images, resize_image
+from .pdf import pdf_to_images
 from .transcriber import transcribe_image
-from .utils import setup_output_dirs, merge_text_files
+from .utils import setup_output_dirs, merge_text_files, resize_image
 
 
 def process_pdf(
