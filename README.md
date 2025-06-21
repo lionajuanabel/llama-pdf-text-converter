@@ -7,7 +7,6 @@ A tool for converting PDFs to text files using Ollama.
 - Convert PDFs to text files locally, no token costs.
 - Use the latest multimodal models supported by Ollama.
 - Turn images and diagrams into detailed text descriptions.
-- Optional settings to optimize performance.
 
 ## Requirements
 
@@ -49,7 +48,6 @@ llama-scan path/to/your/file.pdf
 - `--width`, `-w`: Width of the resized images (0 to skip resizing; default: 0)
 - `--start`, `-s`: Start page number (default: 0)
 - `--end`, `-e`: End page number (default: 0)
-- `--merge-text`, `-mt`: Merge all individual text files into a single merged file (default: False)
 
 ### Examples
 
