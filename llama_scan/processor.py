@@ -10,12 +10,11 @@ from .utils import setup_output_dirs, merge_text_files, resize_image
 def process_pdf(
     pdf_path: str,
     output_dir: str,
-    model: str = "qwen2.5vl:latest",
-    keep_images: bool = False,
-    width: int = 500,
-    start: int = 0,
-    end: int = 0,
-    merge_text: bool = False,
+    model: str,
+    keep_images: bool,
+    width: int,
+    start: int,
+    end: int,
 ) -> None:
     """
     Process a PDF file, converting pages to images and transcribing them.
@@ -28,7 +27,6 @@ def process_pdf(
         width (int): The width of the resized images.
         start (int): The start page number.
         end (int): The end page number.
-        merge_text (bool): Whether to merge all text files into a single file.
     """
     pdf_path = Path(pdf_path)
     output_base = Path(output_dir)

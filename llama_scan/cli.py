@@ -28,28 +28,29 @@ def cli():
         "--keep-images",
         "-k",
         action="store_true",
-        help="Keep the intermediate image files",
+        default=False,
+        help="Keep the intermediate image files (default: False)",
     )
     parser.add_argument(
         "--width",
         "-w",
         type=int,
         default=0,
-        help="Width of the resized images. Set to 0 to skip resizing.",
+        help="Width of the resized images. Set to 0 to skip resizing (default: 0)",
     )
     parser.add_argument(
         "--start",
         "-s",
         type=int,
         default=0,
-        help="Start page number (default: 0).",
+        help="Start page number (default: 0)",
     )
     parser.add_argument(
         "--end",
         "-e",
         type=int,
         default=0,
-        help="End page number (default: 0).",
+        help="End page number (default: 0)",
     )
 
 
