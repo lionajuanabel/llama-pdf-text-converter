@@ -25,12 +25,12 @@ ollama run qwen2.5vl:latest
 
 Install using pip:
 ```bash
-pip install llama-scan
+pip install "git+ssh://git@github.com/ngafar/llama-scan.git"
 ```
 
 or uv:
 ```bash
-uv tool install llama-scan
+uv tool install https://github.com/ngafar/llama-scan.git
 ```
 
 ## Usage
