@@ -48,6 +48,7 @@ llama-scan path/to/your/file.pdf
 - `--width`, `-w`: Width of the resized images (0 to skip resizing; default: 0)
 - `--start`, `-s`: Start page number (default: 0)
 - `--end`, `-e`: End page number (default: 0)
+- `--stdout`, `-s`: Write merged output to stdout (default: False)
 
 ### Examples
 

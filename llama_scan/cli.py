@@ -56,7 +56,7 @@ def cli():
         "--stdout",
         action="store_true",
         default=False,
-        help="Write (merged) output to stdout (default: False)",
+        help="Write merged output to stdout (default: False)",
     )
 
 
