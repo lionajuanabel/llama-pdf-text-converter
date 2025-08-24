@@ -52,6 +52,12 @@ def cli():
         default=0,
         help="End page number (default: 0)",
     )
+    parser.add_argument(
+        "--stdout",
+        action="store_true",
+        default=False,
+        help="Write (merged) output to stdout (default: False)",
+    )
 
 
     args = parser.parse_args()
@@ -64,6 +70,7 @@ def cli():
         width=args.width,
         start=args.start,
         end=args.end,
+        stdout=args.stdout,
     )
 
 

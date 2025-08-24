@@ -15,6 +15,7 @@ def process_pdf(
     width: int,
     start: int,
     end: int,
+    stdout: bool,
 ) -> None:
     """
     Process a PDF file, converting pages to images and transcribing them.
@@ -73,17 +74,21 @@ def process_pdf(
                 with open(text_file, "w", encoding="utf-8") as f:
                     f.write(text)
             except Exception as e:
-                print(f"Error processing page {i}: {str(e)}")
+                print(f"Error processing page {i}: {str(e)}", file=sys.stderr)
 
             # Clean up image if not keeping them
             if not keep_images:
                 image_file.unlink()
 
         # Merge text files
-        merge_text_files(text_dir)
+        merged_file = merge_text_files(text_dir)
 
-        print(f"Processing complete! Output saved to: {output_base}")
+        if stdout:
+            print(open(merged_file, 'r').read(), file=sys.stdout)
+
+
+        print(f"Processing complete! Output saved to: {output_base}", file=sys.stderr)
 
     except Exception as e:
-        print(f"Error: {str(e)}")
+        print(f"Error: {str(e)}", file=sys.stderr)
         sys.exit(1)
