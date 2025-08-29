@@ -13,11 +13,6 @@ def cli():
         help="Path to the input PDF file",
     )
     parser.add_argument(
-        "--custom-instructions",
-        "-c",
-        help="Path to a text file containing additional instructions for the transcription prompt",
-    )
-    parser.add_argument(
         "--output",
         "-o",
         default=f"output_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
@@ -28,20 +23,6 @@ def cli():
         "-m",
         default="qwen2.5vl:latest",
         help="Ollama model to use (default: qwen2.5vl:latest)",
-    )
-    parser.add_argument(
-        "--keep-images",
-        "-k",
-        action="store_true",
-        default=False,
-        help="Keep the intermediate image files (default: False)",
-    )
-    parser.add_argument(
-        "--width",
-        "-w",
-        type=int,
-        default=0,
-        help="Width of the resized images. Set to 0 to skip resizing (default: 0)",
     )
     parser.add_argument(
         "--start",
@@ -56,6 +37,25 @@ def cli():
         type=int,
         default=0,
         help="End page number (default: 0)",
+    )
+    parser.add_argument(
+        "--custom-instructions",
+        "-c",
+        help="Path to a text file containing additional instructions for the transcription prompt",
+    )
+    parser.add_argument(
+        "--width",
+        "-w",
+        type=int,
+        default=0,
+        help="Width of the resized images. Set to 0 to skip resizing (default: 0)",
+    )
+    parser.add_argument(
+        "--keep-images",
+        "-k",
+        action="store_true",
+        default=False,
+        help="Keep the intermediate image files (default: False)",
     )
     parser.add_argument(
         "--stdout",

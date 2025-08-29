@@ -44,11 +44,11 @@ llama-scan path/to/your/file.pdf
 
 - `--output`, `-o`: Output directory (default: "output")
 - `--model`, `-m`: Ollama model to use (default: "qwen2.5vl:latest")
-- `--custom-instructions`, `-c`: Optional path to a text file containing additional instructions (default: None)
-- `--keep-images`, `-k`: Keep the intermediate image files (default: False)
-- `--width`, `-w`: Width of the resized images (0 to skip resizing; default: 0)
 - `--start`, `-s`: Start page number (default: 0)
 - `--end`, `-e`: End page number (default: 0)
+- `--custom-instructions`, `-c`: Optional path to a text file containing additional instructions (default: None)
+- `--width`, `-w`: Width of the resized images (0 to skip resizing; default: 0)
+- `--keep-images`, `-k`: Keep the intermediate image files (default: False)
 - `--stdout`, `-s`: Write merged output to stdout (default: False)
 
 ### Examples
