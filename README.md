@@ -43,8 +43,8 @@ llama-scan path/to/your/file.pdf
 ### Options
 
 - `--output`, `-o`: Output directory (default: "output")
-- `--custom-instructions`, `-c`: Path to a text file containing additional instructions for the transcription prompt (default: None)
 - `--model`, `-m`: Ollama model to use (default: "qwen2.5vl:latest")
+- `--custom-instructions`, `-c`: Optional path to a text file containing additional instructions (default: None)
 - `--keep-images`, `-k`: Keep the intermediate image files (default: False)
 - `--width`, `-w`: Width of the resized images (0 to skip resizing; default: 0)
 - `--start`, `-s`: Start page number (default: 0)
@@ -53,9 +53,9 @@ llama-scan path/to/your/file.pdf
 
 ### Examples
 
-Process specific pages with custom width:
+Process specific pages:
 ```bash
-llama-scan document.pdf --start 1 --end 5 --width 1000
+llama-scan document.pdf --start 1 --end 5
 ```
 
 Use a different Ollama model:
