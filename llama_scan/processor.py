@@ -9,6 +9,7 @@ from .utils import setup_output_dirs, merge_text_files, resize_image
 
 def process_pdf(
     pdf_path: str,
+    custom_instructions: str,
     output_dir: str,
     model: str,
     keep_images: bool,
@@ -22,12 +23,14 @@ def process_pdf(
 
     Args:
         pdf_path (str): The path to the PDF file.
+        custom_instructions (str): Additional instructions for the transcription prompt.
         output_dir (str): The directory to save the output.
         model (str): The model to use for transcription.
         keep_images (bool): Whether to keep the images after processing.
         width (int): The width of the resized images.
         start (int): The start page number.
         end (int): The end page number.
+        stdout (bool): Whether to write output to stdout.
     """
     pdf_path = Path(pdf_path)
     output_base = Path(output_dir)
@@ -41,6 +44,22 @@ def process_pdf(
             "Error: Ollama server not running. Please start the server and try again."
         )
         sys.exit(1)
+
+    # Read custom instructions file if provided
+    custom_instructions_content = None
+    if custom_instructions:
+        custom_instructions_path = Path(custom_instructions)
+        if not custom_instructions_path.exists():
+            print(
+                f"Error: Custom instructions file not found: {custom_instructions_path}"
+            )
+            sys.exit(1)
+        try:
+            with open(custom_instructions_path, "r", encoding="utf-8") as f:
+                custom_instructions_content = f.read().strip()
+        except Exception as e:
+            print(f"Error reading custom instructions file: {str(e)}")
+            sys.exit(1)
 
     # Setup output directories
     image_dir, text_dir = setup_output_dirs(output_base)
@@ -67,7 +86,11 @@ def process_pdf(
         ):
             # Transcribe the image
             try:
-                text = transcribe_image(str(image_file), model=model)
+                text = transcribe_image(
+                    str(image_file),
+                    model=model,
+                    custom_instructions=custom_instructions_content,
+                )
 
                 # Save transcription
                 text_file = text_dir / f"{image_file.stem}.txt"
@@ -84,8 +107,7 @@ def process_pdf(
         merged_file = merge_text_files(text_dir)
 
         if stdout:
-            print(open(merged_file, 'r').read(), file=sys.stdout)
-
+            print(open(merged_file, "r").read(), file=sys.stdout)
 
         print(f"Processing complete! Output saved to: {output_base}", file=sys.stderr)
 

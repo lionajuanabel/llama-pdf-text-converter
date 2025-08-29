@@ -16,22 +16,30 @@ def check_for_server() -> bool:
         return False
 
 
-def transcribe_image(image_path: str, model: str) -> str:
+def transcribe_image(
+    image_path: str, model: str, custom_instructions: str = None
+) -> str:
     """
     Transcribe an image using the specified model.
 
     Args:
         image_path (str): Path to the image file.
         model (str): The model to use for transcription.
+        custom_instructions (str, optional): Additional instructions to include in the prompt.
     """
     # Read and encode the image
     with open(image_path, "rb") as image_file:
         image_data = base64.b64encode(image_file.read()).decode("utf-8")
 
+    # Prepare the prompt with context if provided
+    prompt = TRANSCRIPTION_PROMPT
+    if custom_instructions:
+        prompt = prompt + f"\n\n{custom_instructions}"
+
     # Prepare the request payload
     payload = {
         "model": model,
-        "prompt": TRANSCRIPTION_PROMPT,
+        "prompt": prompt,
         "stream": False,
         "images": [image_data],
     }

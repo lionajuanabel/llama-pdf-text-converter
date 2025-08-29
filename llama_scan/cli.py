@@ -13,6 +13,11 @@ def cli():
         help="Path to the input PDF file",
     )
     parser.add_argument(
+        "--custom-instructions",
+        "-c",
+        help="Path to a text file containing additional instructions for the transcription prompt",
+    )
+    parser.add_argument(
         "--output",
         "-o",
         default=f"output_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
@@ -59,11 +64,11 @@ def cli():
         help="Write merged output to stdout (default: False)",
     )
 
-
     args = parser.parse_args()
 
     process_pdf(
         pdf_path=args.pdf_path,
+        custom_instructions=args.custom_instructions,
         output_dir=args.output,
         model=args.model,
         keep_images=args.keep_images,
