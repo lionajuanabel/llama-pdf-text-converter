@@ -86,7 +86,7 @@ def process_pdf(
         ):
             # Transcribe the image
             try:
-                text = transcribe_image(
+                transcription = transcribe_image(
                     str(image_file),
                     model=model,
                     custom_instructions=custom_instructions_content,
@@ -95,7 +95,7 @@ def process_pdf(
                 # Save transcription
                 text_file = text_dir / f"{image_file.stem}.txt"
                 with open(text_file, "w", encoding="utf-8") as f:
-                    f.write(text)
+                    f.write(transcription)
             except Exception as e:
                 print(f"Error processing page {i}: {str(e)}", file=sys.stderr)
 
