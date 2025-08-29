@@ -1,4 +1,4 @@
-# llama-scan
+# llama-pdf-text-converter
 
 A tool for converting PDFs to text files using Ollama.
 
