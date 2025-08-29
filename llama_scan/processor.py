@@ -2,9 +2,8 @@ import sys
 from pathlib import Path
 from tqdm import tqdm
 
-from .pdf import pdf_to_images
 from .ollama import transcribe_image, check_for_server
-from .utils import setup_output_dirs, merge_text_files, resize_image
+from .utils import setup_output_dirs, merge_text_files, pdf_to_images, resize_image
 
 
 def process_pdf(
