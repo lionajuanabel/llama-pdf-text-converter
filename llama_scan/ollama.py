@@ -1,7 +1,7 @@
 import base64
 import requests
 
-from .constants import OLLAMA_BASE_URL, TRANSCRIPTION_PROMPT
+from .constants import OLLAMA_BASE_URL, BASE_TRANSCRIPTION_PROMPT
 
 
 def check_for_server() -> bool:
@@ -32,7 +32,7 @@ def transcribe_image(
         image_data = base64.b64encode(image_file.read()).decode("utf-8")
 
     # Prepare the prompt with context if provided
-    prompt = TRANSCRIPTION_PROMPT
+    prompt = BASE_TRANSCRIPTION_PROMPT
     if custom_instructions:
         prompt = prompt + f"\n\n{custom_instructions}"
 
