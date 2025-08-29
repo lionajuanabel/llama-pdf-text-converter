@@ -1,23 +1,23 @@
 import base64
 import requests
 
-from .constants import OLLAMA_BASE_URL, BASE_TRANSCRIPTION_PROMPT
+from .constants import BASE_TRANSCRIPTION_PROMPT
 
 
-def check_for_server() -> bool:
+def check_for_server(server_url: str) -> bool:
     """
     Check if the Ollama server is running.
     """
 
     try:
-        response = requests.get(f"{OLLAMA_BASE_URL}/api/tags")
+        response = requests.get(f"{server_url}/api/tags")
         return True
     except requests.exceptions.RequestException:
         return False
 
 
 def transcribe_image(
-    image_path: str, model: str, custom_instructions: str = None
+    image_path: str, model: str, custom_instructions: str = None, server_url: str = None
 ) -> str:
     """
     Transcribe an image using the specified model.
@@ -26,6 +26,7 @@ def transcribe_image(
         image_path (str): Path to the image file.
         model (str): The model to use for transcription.
         custom_instructions (str, optional): Additional instructions to include in the prompt.
+        server_url (str, optional): The URL of the Ollama server.
     """
     # Read and encode the image
     with open(image_path, "rb") as image_file:
@@ -45,7 +46,7 @@ def transcribe_image(
     }
 
     # Make the API call
-    response = requests.post(f"{OLLAMA_BASE_URL}/generate", json=payload)
+    response = requests.post(f"{server_url}/generate", json=payload)
 
     # Check if the request was successful
     if response.status_code == 200:

@@ -47,6 +47,7 @@ llama-scan path/to/your/file.pdf
 - `--start`, `-s`: Start page number (default: 0)
 - `--end`, `-e`: End page number (default: 0)
 - `--custom-instructions`, `-c`: Optional path to a text file containing additional instructions (default: None)
+- `--server-url`, `-u`: Ollama server URL (default: "http://localhost:11434")
 - `--width`, `-w`: Width of the resized images (0 to skip resizing; default: 0)
 - `--keep-images`, `-k`: Keep the intermediate image files (default: False)
 - `--stdout`, `-s`: Write merged output to stdout (default: False)

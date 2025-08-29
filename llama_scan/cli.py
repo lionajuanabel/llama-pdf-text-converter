@@ -44,6 +44,11 @@ def cli():
         help="Path to a text file containing additional instructions for the transcription prompt",
     )
     parser.add_argument(
+        "--server-url",
+        "-u",
+        help="Ollama server URL (default: http://localhost:11434)",
+    )
+    parser.add_argument(
         "--width",
         "-w",
         type=int,
@@ -76,6 +81,7 @@ def cli():
         start=args.start,
         end=args.end,
         stdout=args.stdout,
+        server_url=args.server_url,
     )
 
 

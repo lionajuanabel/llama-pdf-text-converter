@@ -1,5 +1,3 @@
-OLLAMA_BASE_URL = "http://localhost:11434/api"
-
 BASE_TRANSCRIPTION_PROMPT = """Task: Transcribe the page from the provided book image.
 
 - Reproduce the text exactly as it appears, without adding or omitting anything.

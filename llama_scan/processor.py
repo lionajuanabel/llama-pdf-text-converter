@@ -16,6 +16,7 @@ def process_pdf(
     start: int,
     end: int,
     stdout: bool,
+    server_url: str,
 ) -> None:
     """
     Process a PDF file, converting pages to images and transcribing them.
@@ -30,6 +31,7 @@ def process_pdf(
         start (int): The start page number.
         end (int): The end page number.
         stdout (bool): Whether to write output to stdout.
+        server_url (str): The URL of the Ollama server.
     """
     pdf_path = Path(pdf_path)
     output_base = Path(output_dir)
@@ -38,7 +40,7 @@ def process_pdf(
         print(f"Error: PDF file not found: {pdf_path}")
         sys.exit(1)
 
-    if not check_for_server():
+    if not check_for_server(server_url):
         print(
             "Error: Ollama server not running. Please start the server and try again."
         )
@@ -89,6 +91,7 @@ def process_pdf(
                     str(image_file),
                     model=model,
                     custom_instructions=custom_instructions_content,
+                    server_url=server_url,
                 )
 
                 # Save transcription
