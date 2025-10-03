@@ -47,6 +47,7 @@ def cli():
         "--server-url",
         "-u",
         help="Ollama server URL (default: http://localhost:11434)",
+        default="http://localhost:11434",
     )
     parser.add_argument(
         "--width",

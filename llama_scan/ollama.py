@@ -46,7 +46,7 @@ def transcribe_image(
     }
 
     # Make the API call
-    response = requests.post(f"{server_url}/generate", json=payload)
+    response = requests.post(f"{server_url}/api/generate", json=payload)
 
     # Check if the request was successful
     if response.status_code == 200:
